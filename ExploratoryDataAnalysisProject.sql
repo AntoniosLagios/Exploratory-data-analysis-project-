@@ -94,6 +94,7 @@ WITH Company_Year AS
   SELECT company, years, total_laid_off, DENSE_RANK() OVER (PARTITION BY years ORDER BY total_laid_off DESC) AS ranking
   FROM Company_Year
 )
+
 SELECT company, years, total_laid_off, ranking
 FROM Company_Year_Rank
 WHERE ranking <= 3
